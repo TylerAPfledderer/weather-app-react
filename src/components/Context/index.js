@@ -16,10 +16,8 @@ export const Provider = ({children}) => {
         }
     }
 
-    console.log(data.list);
-
     useEffect(() => {
-        // getWeather();
+        getWeather();
     }, []);
 
 
@@ -34,3 +32,17 @@ export const Provider = ({children}) => {
         </WeatherAppContext.Provider>
     );
 }
+
+/**
+    const filterDuplicateObjVals = (arr, prop) => {
+        const newArr = [];
+        let prevItem;
+        array.forEach(currentItem => {
+            if (prevItem === undefined || prevItem[prop] !== currentItem[prop]) {
+            newArr.push(currentItem);
+            }
+            prevItem = currentItem;
+        });
+        return newArr;
+    } 
+ */
