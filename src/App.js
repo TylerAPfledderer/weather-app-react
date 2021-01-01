@@ -3,38 +3,19 @@ import { WeatherAppContext } from "./components/Context";
 import "./scss/App.scss";
 
 function App() {
-  const { forecast, city } = useContext(WeatherAppContext);
-  
-  // let currentDate = "";
-  // let currentDay = "";
-  // let currentMonthDay = "";
-  // let currentWeather = "";
-  
-  // if (forecast) {
-  //   currentDate = new Date(forecast[0]["dt_txt"]);
-  //   currentDay = new Intl.DateTimesFormat("en-US", {weekday: "long"}).format(currentDate);
-  //   currentMonthDay = new Intl.DateTimeFormat("en-US", {
-  //     month: "long",
-  //     day: "numeric"
-  //   }).format(currentDate);
-  //   currentWeather = `http://openweathermap.org/img/wn/${forecast[0].weather[0].icon}@2x.png`;
-  //   console.log(currentWeather);
-  // }
-  
-  // console.log("🚀 ~ file: App.js ~ line 9 ~ App ~ currentDate", currentDate);
-  // const currentDay = new Intl.DateTimeFormat("en-US", {
-  //   weekday: "long",
-  // }).format(currentDate);
+  const { forecast, city, currentDate: forecastToday } = useContext(WeatherAppContext);
 
-  // const currentMonthDay = new Intl.DateTimeFormat("en-US", {
-  //   month: "long",
-  //   day: "numeric",
-  // }).format(currentDate);
-  // const currentWeather = `http://openweathermap.org/img/wn/${forecast[0].weather.icon}@2x.png`;
-  // const mainTemp = Math.ceil(forecast.main.temp);
-  // const weatherDescription =
-  //   forecast[0].weather.description.charAt(0).toUpperCase() +
-  //   forecast[0].weather.description.slice(1);
+  const currentDate = forecastToday.dt_txt !== '' && new Date(forecastToday.dt_txt); // Make sure there is value stored in state.
+  const currentDay = new Intl.DateTimeFormat("en-US", {weekday: "long"}).format(currentDate);
+  const currentMonthDay = new Intl.DateTimeFormat("en-US", {
+    month: "long",
+    day: "numeric"
+  }).format(currentDate);
+  const currentWeatherInfo = forecastToday.weather[0];
+  const currentWeatherImg = `http://openweathermap.org/img/wn/${currentWeatherInfo.icon}@2x.png`;
+  const currentWeatherDesc = 
+    currentWeatherInfo.description.charAt(0).toUpperCase() +
+    currentWeatherInfo.description.slice(1);
 
   const minMaxTempsFromData = function() {
 
@@ -52,49 +33,57 @@ function App() {
       };
     };
 
-    // Check if state contains the data on render before running the loop
-    if (forecast) {
-      let prevObj;
-      let newObjArr = [];
-      let tempArr = [];
-      // Looping through the array of forecast data
-      forecast.forEach((object, index) => {
-        if (prevObj === undefined) {
-          tempArr.push(object.main.temp);
-          prevObj = object;
-          return; //Because we only want to log initial values for the following checks
-        }
+    let prevObj;
+    let newObjArr = [];
+    let tempArr = [];
+    
+    // Looping through the array of forecast data
+    forecast.forEach((object, index) => {
+      if (prevObj === undefined) {
+        tempArr.push(object.main.temp);
+        prevObj = object;
+        return; //Because we only want to log initial values for the following checks
+      }
 
-        const prevDate = new Date(prevObj.dt_txt).getDay();
-        const currDate = new Date(object.dt_txt).getDay();
+      const prevDate = new Date(prevObj.dt_txt).getDay();
+      const currDate = new Date(object.dt_txt).getDay();
 
-        if (currDate === prevDate) {
-          tempArr.push(object.main.temp);
-        } else {
-          newObjArr.push( newObject(prevObj.dt_txt, Math.min(...tempArr), Math.max(...tempArr)) );
-          tempArr = [object.main.temp];
-          prevObj = object;
-        }
+      if (currDate === prevDate) {
+        tempArr.push(object.main.temp);
+      } else {
+        newObjArr.push( newObject(prevObj.dt_txt, Math.min(...tempArr), Math.max(...tempArr)) );
+        tempArr = [object.main.temp];
+        prevObj = object;
+      }
 
-        if (index === forecast.length - 1) {
-          newObjArr.push( newObject(prevObj.dt_txt, Math.min(...tempArr), Math.max(...tempArr)) );
-        }
-      });
-
-      return newObjArr;
-    }
+      if (index === forecast.length - 1) {
+        newObjArr.push( newObject(prevObj.dt_txt, Math.min(...tempArr), Math.max(...tempArr)) );
+      }
+    });
+    newObjArr.shift();
+    return newObjArr;
   };
-  console.log("🚀 ~ file: App.js ~ line 81 ~ minMaxTempsFromData ~ minMaxTempsFromData", minMaxTempsFromData());
+
+  const followingFourDays = minMaxTempsFromData();
 
   return (
     <>
       <header>
         <h1>5-Day Weather Forecast</h1>
-        {/* <span>{city.name}</span> */}
+        <span></span>
+        <span>{city.name}</span>
       </header>
       <main>
         <section>
           {/* <ForecastList /> */}
+          <div>
+            <h3>{currentDay}</h3>
+            <span>{currentMonthDay}</span>
+            <div>
+              <span>{Math.floor(forecastToday.main.temp)} &#176;F</span>
+              <img src={currentWeatherImg} alt={currentWeatherDesc} />
+            </div>
+          </div>
           <div>
             {/* <ForecastCard /> */}
             {/* <h3>{currentDay}</h3>

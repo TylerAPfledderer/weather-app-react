@@ -38,7 +38,8 @@ export const Provider = ({children}) => {
         <WeatherAppContext.Provider
             value={{
                 city: data.city,
-                forecast: data.list
+                forecast: data.list,
+                forecastToday: data.list[0]
             }}
         >
             {children}
