@@ -4,9 +4,24 @@ import "./scss/App.scss";
 
 function App() {
   const { forecast, city } = useContext(WeatherAppContext);
-  // const { main } = forecast;
-
-  // const currentDate = new Date(forecast[0].dt_text);
+  
+  // let currentDate = "";
+  // let currentDay = "";
+  // let currentMonthDay = "";
+  // let currentWeather = "";
+  
+  // if (forecast) {
+  //   currentDate = new Date(forecast[0]["dt_txt"]);
+  //   currentDay = new Intl.DateTimesFormat("en-US", {weekday: "long"}).format(currentDate);
+  //   currentMonthDay = new Intl.DateTimeFormat("en-US", {
+  //     month: "long",
+  //     day: "numeric"
+  //   }).format(currentDate);
+  //   currentWeather = `http://openweathermap.org/img/wn/${forecast[0].weather[0].icon}@2x.png`;
+  //   console.log(currentWeather);
+  // }
+  
+  // console.log("🚀 ~ file: App.js ~ line 9 ~ App ~ currentDate", currentDate);
   // const currentDay = new Intl.DateTimeFormat("en-US", {
   //   weekday: "long",
   // }).format(currentDate);
