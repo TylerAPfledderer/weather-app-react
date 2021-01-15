@@ -1,0 +1,15 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: url('images/raleigh_skyline.jpg') no-repeat center / cover;
+    height: 100vh;
+}
+
+#root {
+    height: 100vh;
+    backdrop-filter: blur(10px);
+}

@@ -11,7 +11,6 @@ function App() {
     <>
       <header>
         <h1>5-Day Weather Forecast</h1>
-        <span></span>
         <span>{city.name}, {city.country}</span>
       </header>
       <main>
