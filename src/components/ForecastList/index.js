@@ -1,35 +1,30 @@
 import { useContext } from "react";
 import { WeatherAppContext } from "../Context";
 import CurrentDay from "./CurrentDay";
-
-import "./ForecastList.css";
+import FollowingDay from "./FollowingDay";
 
 const ForecastList = () => {
 	const { minifiedFourDays } = useContext(WeatherAppContext);
 
 	return (
-		<section id="forecastList">
+		<section className="m-4 text-light">
 			<CurrentDay />
-			{/* <ForecastList /> */}
-			{minifiedFourDays.map(
-				({ day, monthDay, minTemp, maxTemp, weatherIcon }, index) => {
-					return (
-						<div key={index}>
-							<h3>{day}</h3>
-							<span>{monthDay}</span>
-							<div>
-								<span>
-									{minTemp} &#176;F / {maxTemp} &#176;F
-								</span>
-								<img
-									src={`http://openweathermap.org/img/wn/${weatherIcon}@2x.png`}
-									alt=""
-								/>
-							</div>
-						</div>
-					);
-				}
-			)}
+			<div className="d-flex justify-content-center align-items-center flex-wrap">
+				{minifiedFourDays.map(
+					({ day, monthDay, minTemp, maxTemp, weatherIcon }, index) => {
+						return (
+							<FollowingDay 
+								key={index}
+								dayNum={day}
+								monthDay={monthDay}
+								minTemp={minTemp}
+								maxTemp={maxTemp}
+								src={`http://openweathermap.org/img/wn/${weatherIcon}@2x.png`}
+							/>
+						);
+					}
+				)}
+			</div>
 		</section>
 	);
 };

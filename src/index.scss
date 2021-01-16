@@ -6,10 +6,12 @@
 
 body {
     background: url('images/raleigh_skyline.jpg') no-repeat center / cover;
+    background-color: rgba(36, 88, 129, 0.5) !important;
+    background-blend-mode: multiply;
     height: 100vh;
 }
 
 #root {
+    backdrop-filter: blur(5px);
     height: 100vh;
-    backdrop-filter: blur(10px);
 }

@@ -1,18 +1,14 @@
-import { useContext } from "react";
-import { WeatherAppContext } from "./components/Context";
 import ForecastList from "./components/ForecastList";
-import "./scss/App.scss";
+import Header from "./components/Header";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Container } from "react-bootstrap";
 
 function App() {
-  const { city } = useContext(WeatherAppContext);
   
 
   return (
     <>
-      <header>
-        <h1>5-Day Weather Forecast</h1>
-        <span>{city.name}, {city.country}</span>
-      </header>
+      <Header />
       <main>
         <ForecastList />
       </main>
