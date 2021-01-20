@@ -3,17 +3,18 @@ import { WeatherAppContext } from "./Context";
 
 const Header = () => {
 
-    const { city } = useContext(WeatherAppContext);
-
+    const { city, locationErr } = useContext(WeatherAppContext);
+    
     return (
         <header className="text-center text-light">
             <h1 className="display-1">5-Day Weather Forecast</h1>
             <span className="h2">
                 {
-                    city.name === '' 
+                    city === '' 
                     ? "Loading..." 
-                    : `${city.name} ${city.country}`
+                    : `${city}`
                 }
+                {locationErr && <p>Location Error: {locationErr}</p>}
             </span>
         </header>
     );
