@@ -1,0 +1,23 @@
+* {
+  @include line-height(1);
+  box-sizing: border-box;
+  padding: 0;
+}
+
+body {
+  --body-color: var(--night-body-color);
+  background: var(--body-color);
+  height: 100vh;
+}
+
+#root {
+  border-radius: 10px;
+  display: flex;
+  overflow: hidden;
+  width: 1000px;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

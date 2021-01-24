@@ -1,16 +1,14 @@
-import ForecastList from "./components/ForecastList";
-import Header from "./components/Header";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import NavBar from './components/NavBar';
+import Main from './components/Main';
+
+import './css/weather-icons.min.css';
+import './scss/styles.scss';
 
 function App() {
-  
-
   return (
     <>
-      <Header />
-      <main>
-        <ForecastList />
-      </main>
+      <NavBar />
+      <Main />
     </>
   );
 }

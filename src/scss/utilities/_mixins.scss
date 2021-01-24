@@ -1,0 +1,16 @@
+@mixin font-size($number) {
+  font-size: #{ $number * $base + 'px'};
+  font-size: #{ $number + 'rem'};
+}
+
+@mixin line-height($number) {
+  line-height: $number * $line-height;
+}
+
+@mixin margin-bottom($number) {
+  margin-bottom: ($number * $line-height) * 1rem;
+}
+
+@mixin margin-top($number) {
+  margin-top: ($number * $line-height) * 1rem;
+}

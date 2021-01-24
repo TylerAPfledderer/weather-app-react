@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap');
+
+html {
+  font-family: "Open Sans", Arial, Helvetica, sans-serif
+}
+
+$type-scale: (
+  typescale-1: (2, 3, 1, 7.594),
+  typescale-2: (1.5, 2, 1, 5.063),
+  typescale-3: (1.5, 1, 0, 3.375),
+  typescale-4: (1, 1, 0, 2.25),
+  typescale-5: (1, 1, 0, 1.5)
+);
+
+@each $scaleFont, $properties in $type-scale {
+  %#{$scaleFont} {
+    @include line-height(nth($properties, 1));
+    @include margin-top(nth($properties, 2));
+    @include margin-bottom(nth($properties, 3));
+    font-size: nth($properties, 4) * 1rem;
+  }
+}

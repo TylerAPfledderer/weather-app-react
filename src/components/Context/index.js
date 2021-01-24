@@ -5,74 +5,66 @@ import { fetchData } from "../../utils";
 export const WeatherAppContext = createContext();
 
 export const Provider = ({ children }) => {
+  const { location, locationError } = useCurrentLocation();
+  
+  const [currentAddress, setAddress] = useState({
+    locality: "",
+    principalSubdivision: "",
+  });
 
-	const { location, locationError } = useCurrentLocation();
-	// const [oneCall, setOneCall] = useState({});
-	const [currentAddress, setAddress] = useState({
-		city: ""
-	});
+  const [oneCall, setOneCall] = useState({
+    current: {
+      dt: 0,
+      temp: 0,
+      weather: [
+        {
+          id: 0,
+          description: "",
+        },
+      ],
+    },
+    daily: [
+      {
+        dt: 0,
+        temp: {
+          min: 0,
+          max: 0,
+        },
+        weather: [
+          {
+            id: 0,
+            description: "",
+          },
+        ],
+      },
+    ],
+  });
 
-	const [currDayData, setCurrDay] = useState({
-		weather: [
-			{
-				description: "",
-				icon: "",
-			},
-		],
-		main: {
-			temp: 0,
-		},
-		dt: 0,
-	});
-	const [fiveDayData, setFiveDay] = useState({
-		city: { name: "" },
-		list: [
-			{
-				main: {
-					temp: 0,
-				},
-				weather: [
-					{
-						description: "",
-						icon: "",
-					},
-				],
-				dt_txt: "",
-			},
-		],
-	});
-	// https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&key=AIzaSyBLAU2TZ3us-WycexcaFGAI7FZj6ZzsaDQ
+  useEffect(() => {
+    const { longitude, latitude } = location;
+    // Get city and state from geo coordinates generated from useCurrentLocation hook
 
-	useEffect(() => {
-		const { longitude, latitude } = location;
+    const weatherAPIKey = "79709e9bb8ffe2a8b3e3ef6b8f3be053";
 
-		fetchData(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`, setAddress);
+    const oneCallUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude={minutely}&units=imperial&appid=${weatherAPIKey}`;
+    console.log(oneCallUrl);
+    fetchData(
+      `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`,
+      setAddress
+    );
+    fetchData(oneCallUrl, setOneCall);
+  }, [location]);
 
-		const weatherCityLoc = "Raleigh";
-		const weatherAPIKey = "79709e9bb8ffe2a8b3e3ef6b8f3be053";
-		const fiveDayUrl = `http://api.openweathermap.org/data/2.5/forecast?q=${weatherCityLoc},us&units=imperial&appid=${weatherAPIKey}`;
-		const currentDayUrl = `http://api.openweathermap.org/data/2.5/weather?q=${weatherCityLoc}&units=imperial&appid=${weatherAPIKey}`;
-		
-
-		const oneCall = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude={minutely}&appid=${weatherAPIKey}`;
-		console.log(oneCall);
-        fetchData(currentDayUrl, setCurrDay);
-		fetchData(fiveDayUrl, setFiveDay);
-		
-		//35.78590906705397, -78.66007819485183
-        
-	}, [location]);
-
-	return (
-		<WeatherAppContext.Provider
-			value={{
-				currentForecast: currDayData,
-				city: currentAddress.city,
-				locationErr: locationError,
-				fullFourDays: fiveDayData,
-			}}
-		>
-			{children}
-		</WeatherAppContext.Provider>
-	);
+  return (
+    <WeatherAppContext.Provider
+      value={{
+        currentForecast: oneCall.current,
+        currentAddress,
+        locationErr: locationError,
+        dailyforecast: oneCall.daily,
+      }}
+    >
+      {children}
+    </WeatherAppContext.Provider>
+  );
 };
