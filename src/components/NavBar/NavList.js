@@ -1,27 +1,33 @@
-import { useContext } from "react";
-import { WeatherAppContext } from "../Context";
-import ForecastDayLink from "./ForecastDayLink";
+import { useContext } from 'react';
+import { WeatherAppContext } from '../Context';
+import ForecastDayLink from './ForecastDayLink';
 
 const NavList = () => {
-  const { dailyforecast } = useContext(WeatherAppContext);
+  const { dailyForecast } = useContext(WeatherAppContext);
 
   return (
     <ul>
-      {dailyforecast &&
-        dailyforecast
+      {dailyForecast &&
+        dailyForecast
           .slice(0, 5)
           .map(({ dt, temp: { min, max }, weather: [{ id }] }, index) => {
             const date = dt !== 0 && new Date(dt * 1000);
-            const day = new Intl.DateTimeFormat("en-US", {
-              weekday: "long",
+            const weekday = new Intl.DateTimeFormat('en-US', {
+              weekday: 'short',
+            }).format(date);
+            const dayNum = new Intl.DateTimeFormat('en-US', {
+              month: 'numeric',
+              day: 'numeric',
             }).format(date);
             return (
               <ForecastDayLink
                 key={index}
-                day={day}
+                index={index}
+                day={weekday}
                 icon={id}
                 minTemp={min}
                 maxTemp={max}
+                date={dayNum}
               />
             );
           })}

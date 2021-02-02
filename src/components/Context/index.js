@@ -1,15 +1,15 @@
-import { createContext, useEffect, useState } from "react";
-import useCurrentLocation from "../../hooks/useCurrentLocation";
-import { fetchData } from "../../utils";
+import { createContext, useEffect, useState } from 'react';
+import useCurrentLocation from '../../hooks/useCurrentLocation';
+import { fetchData } from '../../utils';
 
 export const WeatherAppContext = createContext();
 
 export const Provider = ({ children }) => {
   const { location, locationError } = useCurrentLocation();
-  
+
   const [currentAddress, setAddress] = useState({
-    locality: "",
-    principalSubdivision: "",
+    city: '',
+    principalSubdivision: '',
   });
 
   const [oneCall, setOneCall] = useState({
@@ -19,7 +19,7 @@ export const Provider = ({ children }) => {
       weather: [
         {
           id: 0,
-          description: "",
+          description: '',
         },
       ],
     },
@@ -33,7 +33,7 @@ export const Provider = ({ children }) => {
         weather: [
           {
             id: 0,
-            description: "",
+            description: '',
           },
         ],
       },
@@ -44,10 +44,10 @@ export const Provider = ({ children }) => {
     const { longitude, latitude } = location;
     // Get city and state from geo coordinates generated from useCurrentLocation hook
 
-    const weatherAPIKey = "79709e9bb8ffe2a8b3e3ef6b8f3be053";
+    const weatherAPIKey = '79709e9bb8ffe2a8b3e3ef6b8f3be053';
 
     const oneCallUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude={minutely}&units=imperial&appid=${weatherAPIKey}`;
-    console.log(oneCallUrl);
+
     fetchData(
       `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`,
       setAddress
@@ -61,7 +61,8 @@ export const Provider = ({ children }) => {
         currentForecast: oneCall.current,
         currentAddress,
         locationErr: locationError,
-        dailyforecast: oneCall.daily,
+        dailyForecast: oneCall.daily,
+        hourForecast: oneCall.hourly,
       }}
     >
       {children}

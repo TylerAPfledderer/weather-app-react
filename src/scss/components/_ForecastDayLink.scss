@@ -1,0 +1,55 @@
+.nav__link {
+  & > * {
+    transition: transform 0.3s;
+  }
+
+  &:hover {
+    color: #fff;
+    background-color: #bfb6e9;
+    font-weight: bold;
+
+    & > * {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.day {
+  &-link-temps {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    position: relative;
+
+    &::after {
+      content: '';
+      display: block;
+      width: 40%;
+      height: 3%;
+      background-color: #555;
+      transform-origin: left center;
+      transform: rotate(-45deg) translate(-50%, -50%);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+    }
+  }
+
+  $font-size: 20px;
+
+  &-hi-temp {
+    font-size: $font-size;
+    font-weight: bold;
+    margin-bottom: 25%;
+  }
+
+  &-low-temp {
+    font-size: $font-size;
+    margin-top: 25%;
+  }
+
+  & i {
+    font-size: 1.25em;
+  }
+}

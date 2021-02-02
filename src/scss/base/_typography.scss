@@ -1,15 +1,41 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap');
+@use '../utilities' as *;
 
 html {
-  font-family: "Open Sans", Arial, Helvetica, sans-serif
+  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
 }
 
 $type-scale: (
-  typescale-1: (2, 3, 1, 7.594),
-  typescale-2: (1.5, 2, 1, 5.063),
-  typescale-3: (1.5, 1, 0, 3.375),
-  typescale-4: (1, 1, 0, 2.25),
-  typescale-5: (1, 1, 0, 1.5)
+  typescale-1: (
+    2,
+    3,
+    1,
+    5.653,
+  ),
+  typescale-2: (
+    1.5,
+    2,
+    1,
+    3.998,
+  ),
+  typescale-3: (
+    1.5,
+    1,
+    0,
+    2.827,
+  ),
+  typescale-4: (
+    1,
+    1,
+    0,
+    1.999,
+  ),
+  typescale-5: (
+    1,
+    1,
+    0,
+    1.414,
+  ),
 );
 
 @each $scaleFont, $properties in $type-scale {

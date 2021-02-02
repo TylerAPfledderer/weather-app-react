@@ -1,13 +1,14 @@
-import NavList from "./NavList";
+import { lazy, Suspense } from 'react';
+import Header from './Header';
+const NavList = lazy(() => import('./NavList'));
 
 const NavBar = () => {
   return (
-    <nav className="nav">
-      <header className="nav__header">
-        <h1 className="site-title">5-Day Forecast</h1>
-        <h2 className="city-name">Raleigh, North Carolina</h2>
-      </header>
-      <NavList />
+    <nav className='nav'>
+      <Header />
+      <Suspense fallback={<div>Loading...</div>}>
+        <NavList />
+      </Suspense>
     </nav>
   );
 };

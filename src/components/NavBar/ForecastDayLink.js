@@ -1,26 +1,33 @@
 import { BsChevronCompactRight } from 'react-icons/bs';
-import { WiDegrees } from 'react-icons/wi';
+import { Link } from 'react-router-dom';
 
-const ForecastDayLink = ({icon, day, date, minTemp, maxTemp}) => {
-
-  /* 
-    TODO:
-      1. Pass in router props to the li tag for the Link component
-      2. Replace the anchor tag with the Link component
-  */
+const ForecastDayLink = ({ icon, day, date, minTemp, maxTemp, index }) => {
   return (
-    <li className="nav__item">
-      <a href="/" className="nav__link">
+    <li className='nav__item'>
+      <Link
+        to={{
+          pathname: `/forecast-in-depth/${index}`,
+          thisDate: date,
+        }}
+        className='nav__link'
+      >
         <i className={`wi wi-owm-${icon} wi-link-icon`}></i>
-        <p className="day-link-temps">
-          <span>{maxTemp}<WiDegrees /></span><span>{minTemp}<WiDegrees /></span>
+        <p className='day-link-temps'>
+          <span className='day-hi-temp'>
+            {Math.floor(maxTemp)}
+            <i className='wi wi-fahrenheit'></i>
+          </span>
+          <span className='day-low-temp'>
+            {Math.floor(minTemp)}
+            <i className='wi wi-fahrenheit'></i>
+          </span>
         </p>
-        <div className="day-link-date">
+        <div className='day-link-date'>
           <span>{day}</span>
           <span>{date}</span>
         </div>
-        <BsChevronCompactRight className="link-indicator" />
-      </a>
+        <BsChevronCompactRight className='link-indicator' />
+      </Link>
     </li>
   );
 };

@@ -1,0 +1,46 @@
+@import '../../../scss/utilities';
+@import '../../../scss/base/typography';
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  position: relative;
+}
+
+.wrapper {
+  background: rgba(black, 0.3);
+  border-radius: 10px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.sectionTitle {
+  @extend %typescale-5;
+  @include margin-top(0);
+  @include margin-bottom(1);
+}
+
+.currentTemp {
+  @extend %typescale-1;
+  @include margin-top(0);
+  @include margin-bottom(1);
+  line-height: 1;
+}
+
+.weatherIcon {
+  @extend %typescale-1;
+  @include margin-top(0);
+  line-height: 1;
+}
+
+.weekDay,
+.fullDate {
+  @extend %typescale-4;
+  @include margin-top(0);
+}
