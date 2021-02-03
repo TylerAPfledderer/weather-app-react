@@ -1,9 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap');
-@use '../utilities' as *;
-
-html {
-  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
-}
+@import 'mixins';
 
 $type-scale: (
   typescale-1: (

@@ -1,0 +1,16 @@
+@import '../../../global_styles/typography.scss';
+
+.site_title {
+  @extend %typescale-4;
+  font-weight: 300;
+}
+
+.city_name {
+  font-size: $base-font-size;
+  font-weight: 700;
+}
+
+.header {
+  @include margin-bottom(1);
+  text-align: center;
+}

@@ -4,7 +4,7 @@ const NavList = lazy(() => import('./NavList'));
 
 const NavBar = () => {
   return (
-    <nav className='nav'>
+    <nav style={{ background: '#fff', flex: 1 }}>
       <Header />
       <Suspense fallback={<div>Loading...</div>}>
         <NavList />
