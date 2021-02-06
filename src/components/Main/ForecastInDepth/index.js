@@ -12,7 +12,6 @@ const useHourData = (thisDate) => {
     hourForecast.filter(
       (item) => new Date(item.dt * 1000).getDate() === dayOfMonth
     );
-  console.log(currentHours && currentHours.slice(0, 8));
   return currentHours && currentHours.slice(0, 8);
 };
 

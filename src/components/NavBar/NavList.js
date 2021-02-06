@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import { isToday, isTomorrow } from '../../utils';
 import { WeatherAppContext } from '../Context';
 import ForecastDayLink from './ForecastDayLink';
 
@@ -16,15 +17,18 @@ const getDateInfo = (date) => {
     return console.error(err.message);
   }
 
-  let weekday = new Intl.DateTimeFormat('en-US', {
-    weekday: 'long',
-  }).format(date);
+  let weekday;
 
-  if (date.getDate() === new Date().getDate()) {
+  if (isToday(date)) {
     weekday = 'Today';
-  } else if (date.getDate() === new Date().getDate() + 1) {
+  } else if (isTomorrow(date)) {
     weekday = 'Tomorrow';
+  } else {
+    weekday = new Intl.DateTimeFormat('en-US', {
+      weekday: 'long',
+    }).format(date);
   }
+
   const monthDay = new Intl.DateTimeFormat('en-US', {
     month: 'numeric',
     day: 'numeric',
@@ -38,7 +42,7 @@ const NavList = () => {
 
   return (
     <ul>
-      {dailyForecast &&
+      {(dailyForecast &&
         dailyForecast
           .slice(0, 5)
           .map(({ dt, temp: { min, max }, weather: [{ id }] }, index) => {
@@ -57,7 +61,7 @@ const NavList = () => {
                 monthDay={monthDay}
               />
             );
-          })}
+          })) || <h2>Loading...</h2>}
     </ul>
   );
 };
