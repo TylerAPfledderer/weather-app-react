@@ -41,10 +41,7 @@ const CurrentForecast = () => {
     currentForecast
   );
 
-  const {
-    temp,
-    weather: [{ id }],
-  } = currentForecast || {};
+  const { temp, weather } = currentForecast || {};
   const { date, weekday, fullDay } = useCurrentDates(currentForecast);
 
   return (
@@ -54,7 +51,9 @@ const CurrentForecast = () => {
         <span className={currentTemp}>
           {Math.floor(temp)} <i className='wi wi-fahrenheit'></i>
         </span>
-        <i className={`wi wi-owm-${id} ${weatherIcon}`}></i>
+        <i
+          className={`wi wi-owm-${weather && weather[0].id} ${weatherIcon}`}
+        ></i>
         <span className={weekDay}>{weekday}</span>
         <span className={fullDate}>{fullDay}</span>
       </div>
