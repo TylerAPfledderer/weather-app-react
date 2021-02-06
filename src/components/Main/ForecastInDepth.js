@@ -1,15 +1,10 @@
-import { Link } from 'react-router-dom';
-
-/**
- * Button to take the user back to the Current Day info at the root path
- */
-const CurrentDayLink = () => (
-  <button>
-    <Link to='/'>Current Forecast</Link>
-  </button>
-);
+import InDepthLink from '../InDepthLink';
 
 const ForecastInDepth = ({ location }) => {
+  console.log(
+    '🚀 ~ file: ForecastInDepth.js ~ line 4 ~ ForecastInDepth ~ location',
+    new Date(location.thisDate)
+  );
   const dayNum = location && new Date(location.thisDate).getDay();
   return (
     <div>
@@ -19,7 +14,7 @@ const ForecastInDepth = ({ location }) => {
         - Filter array of hourly data to the hours of the given day
         - Map new array
       */}
-      <CurrentDayLink />
+      <InDepthLink path='/'>Current Forecast</InDepthLink>
     </div>
   );
 };

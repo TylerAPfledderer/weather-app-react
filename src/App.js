@@ -3,12 +3,15 @@ import Main from './components/Main';
 
 import './css/weather-icons.min.css';
 import './global_styles/base.scss';
+import ErrorBoundary from './components/ErrorBoundary';
 
 function App() {
   return (
     <>
-      <NavBar />
-      <Main />
+      <ErrorBoundary>
+        <NavBar />
+        <Main />
+      </ErrorBoundary>
     </>
   );
 }

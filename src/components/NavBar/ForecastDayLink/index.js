@@ -11,7 +11,15 @@ import {
   day_link__date,
 } from './ForecastDayLink.module.scss';
 
-const ForecastDayLink = ({ icon, day, date, minTemp, maxTemp, index }) => {
+const ForecastDayLink = ({
+  icon,
+  day,
+  date,
+  monthDay,
+  minTemp,
+  maxTemp,
+  index,
+}) => {
   return (
     <li className={link_item}>
       <Link
@@ -34,7 +42,7 @@ const ForecastDayLink = ({ icon, day, date, minTemp, maxTemp, index }) => {
         </p>
         <div className={day_link__date}>
           <span>{day}</span>
-          <span>{date}</span>
+          <span>{monthDay}</span>
         </div>
         <BsChevronCompactRight />
       </Link>

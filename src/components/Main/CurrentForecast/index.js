@@ -1,6 +1,6 @@
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
 import { WeatherAppContext } from '../../Context';
+import InDepthLink from '../../InDepthLink';
 
 import {
   container,
@@ -10,11 +10,10 @@ import {
   weatherIcon,
   weekDay,
   fullDate,
-  currentOutlookBtn,
 } from './CurrentForecast.module.scss';
 
-const useCurrentDates = (prop) => {
-  const { dt } = prop || {};
+const useCurrentData = (prop) => {
+  const { dt, temp, weather } = prop || {};
   const date = dt && new Date(dt * 1000);
 
   const weekday =
@@ -31,38 +30,39 @@ const useCurrentDates = (prop) => {
       year: 'numeric',
     }).format(date);
 
-  return { date, weekday, fullDay };
+  const currTemp = temp ? Math.floor(temp) : 0;
+
+  const weatherId = weather && weather[0].id;
+
+  return { date, weekday, fullDay, currTemp, weatherId };
 };
 
 const CurrentForecast = () => {
   const { currentForecast } = useContext(WeatherAppContext);
-  console.log(
-    '🚀 ~ file: index.js ~ line 39 ~ CurrentForecast ~ currentForecast',
+  const { date, weekday, fullDay, currTemp, weatherId } = useCurrentData(
     currentForecast
   );
-
-  const { temp, weather } = currentForecast || {};
-  const { date, weekday, fullDay } = useCurrentDates(currentForecast);
 
   return (
     <div className={container}>
       <div className={wrapper}>
         <h2 className={sectionTitle}>Right Now</h2>
         <span className={currentTemp}>
-          {Math.floor(temp)} <i className='wi wi-fahrenheit'></i>
+          {currTemp} <i className='wi wi-fahrenheit'></i>
         </span>
-        <i
-          className={`wi wi-owm-${weather && weather[0].id} ${weatherIcon}`}
-        ></i>
+        <i className={`wi wi-owm-${weatherId} ${weatherIcon}`}></i>
         <span className={weekDay}>{weekday}</span>
         <span className={fullDate}>{fullDay}</span>
       </div>
-      <Link
+      {/* <Link
         to={{ pathname: `/forecast-in-depth/0`, thisDate: date }}
         className={currentOutlookBtn}
       >
         Today's Outlook
-      </Link>
+      </Link> */}
+      <InDepthLink date={date} path='/forecast-in-depth/0'>
+        Today's Outlook
+      </InDepthLink>
     </div>
   );
 };

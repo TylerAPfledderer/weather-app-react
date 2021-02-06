@@ -15,19 +15,20 @@ const NavList = () => {
             const weekday = new Intl.DateTimeFormat('en-US', {
               weekday: 'short',
             }).format(date);
-            const dayNum = new Intl.DateTimeFormat('en-US', {
+            const monthDay = new Intl.DateTimeFormat('en-US', {
               month: 'numeric',
               day: 'numeric',
             }).format(date);
             return (
               <ForecastDayLink
                 key={index}
+                date={date}
                 index={index}
                 day={weekday}
                 icon={id}
                 minTemp={min}
                 maxTemp={max}
-                date={dayNum}
+                monthDay={monthDay}
               />
             );
           })}

@@ -31,6 +31,10 @@
   @include margin-top(0);
   @include margin-bottom(1);
   line-height: 1;
+
+  i {
+    margin-left: -16px;
+  }
 }
 
 .weatherIcon {
