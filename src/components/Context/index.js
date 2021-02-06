@@ -7,38 +7,9 @@ export const WeatherAppContext = createContext();
 export const Provider = ({ children }) => {
   const { location, locationError } = useCurrentLocation();
 
-  const [currentAddress, setAddress] = useState({
-    city: '',
-    principalSubdivision: '',
-  });
+  const [currentAddress, setAddress] = useState({});
 
-  const [oneCall, setOneCall] = useState({
-    current: {
-      dt: 0,
-      temp: 0,
-      weather: [
-        {
-          id: 0,
-          description: '',
-        },
-      ],
-    },
-    daily: [
-      {
-        dt: 0,
-        temp: {
-          min: 0,
-          max: 0,
-        },
-        weather: [
-          {
-            id: 0,
-            description: '',
-          },
-        ],
-      },
-    ],
-  });
+  const [oneCall, setOneCall] = useState({});
 
   useEffect(() => {
     const { longitude, latitude } = location;

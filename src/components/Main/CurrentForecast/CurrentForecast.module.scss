@@ -1,3 +1,4 @@
+@import '../../../global_styles/variables';
 @import '../../../global_styles/typography.scss';
 
 .container {
@@ -42,4 +43,16 @@
 .fullDate {
   @extend %typescale-4;
   @include margin-top(0);
+}
+
+.currentOutlookBtn {
+  background: #aaa;
+  border-radius: 31px;
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+  padding: calc((44px - #{$line-height + 'rem'}) / 2) 16px;
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
 }
