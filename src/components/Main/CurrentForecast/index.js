@@ -60,7 +60,7 @@ const CurrentForecast = () => {
       >
         Today's Outlook
       </Link> */}
-      <InDepthLink date={date} path='/forecast-in-depth/0'>
+      <InDepthLink date={date} path='/forecast-in-depth/0' weekday='Today'>
         Today's Outlook
       </InDepthLink>
     </div>

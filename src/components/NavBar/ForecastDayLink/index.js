@@ -26,6 +26,7 @@ const ForecastDayLink = ({
         to={{
           pathname: `/forecast-in-depth/${index}`,
           thisDate: date,
+          weekDay: day,
         }}
         className={link}
       >

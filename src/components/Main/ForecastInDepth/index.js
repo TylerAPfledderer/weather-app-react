@@ -2,7 +2,16 @@ import { useContext } from 'react';
 import { WeatherAppContext } from '../../Context';
 import InDepthLink from '../../InDepthLink';
 
-import { container, wrapper, hourlyList } from './ForecastInDepth.module.scss';
+import {
+  container,
+  wrapper,
+  weekdayTitle,
+  dateSubtitle,
+  hourlyList,
+  hourlyItem,
+  itemTime,
+  weatherIcon,
+} from './ForecastInDepth.module.scss';
 
 const useHourData = (thisDate) => {
   const { hourForecast } = useContext(WeatherAppContext);
@@ -15,19 +24,29 @@ const useHourData = (thisDate) => {
   return currentHours && currentHours.slice(0, 8);
 };
 
-const ForecastInDepth = ({ location }) => {
+const ForecastInDepth = ({ location, match }) => {
+  console.log('🚀 ~ file: index.js ~ line 28 ~ ForecastInDepth ~ match', match);
+  const todayDate =
+    location.thisDate &&
+    new Intl.DateTimeFormat('en-US', {
+      month: 'long',
+      day: 'numeric',
+      year: 'numeric',
+    }).format(new Date(location.thisDate));
+
   const eightHours = useHourData(location.thisDate);
+
   return (
     <div className={container}>
       <div className={wrapper}>
-        <h1>Today</h1>
-        <h2>January 18, 2021</h2>
+        <h1 className={weekdayTitle}>{location.weekDay}</h1>
+        <h2 className={dateSubtitle}>{todayDate}</h2>
         <ul className={hourlyList}>
           {eightHours &&
             eightHours.map(({ dt, pop, weather, temp }, index) => (
-              <li key={index}>
-                <span>{dt}</span>
-                <i className={`wi wi-owm-${weather[0].id}`}></i>
+              <li className={hourlyItem} key={index}>
+                <span className={itemTime}>{dt}</span>
+                <i className={`wi wi-owm-${weather[0].id} ${weatherIcon}`}></i>
                 <span>
                   {Math.floor(temp)} <i className='wi wi-degrees'></i>
                 </span>

@@ -6,7 +6,7 @@
 }
 
 @mixin line-height($number) {
-  line-height: $number * $line-height;
+  line-height: ($number * $line-height);
 }
 
 @mixin margin-bottom($number) {

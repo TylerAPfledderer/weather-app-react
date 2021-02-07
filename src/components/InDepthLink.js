@@ -12,9 +12,12 @@ const btnStyle = {
   right: '24px',
 };
 
-const InDepthLink = ({ date, path, children }) => {
+const InDepthLink = ({ date, path, children, weekday }) => {
   return (
-    <Link to={{ pathname: path, thisDate: date }} style={btnStyle}>
+    <Link
+      to={{ pathname: path, thisDate: date, weekDay: weekday }}
+      style={btnStyle}
+    >
       {children}
     </Link>
   );
