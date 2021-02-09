@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useRef } from 'react';
 import { dateFormat } from '../../../utils';
 import { WeatherAppContext } from '../../Context';
 import InDepthLink from '../../InDepthLink';
@@ -16,13 +16,16 @@ import {
 
 const useHourData = (thisDate) => {
   const { hourForecast } = useContext(WeatherAppContext);
-  const dayOfMonth = thisDate && thisDate.getDate();
-  const currentHours =
-    thisDate &&
-    hourForecast.filter(
+  const dayOfMonth = useRef(0);
+  const currentHours = useRef([]);
+
+  if (thisDate) {
+    dayOfMonth.current = thisDate.getDate();
+    currentHours.current = hourForecast.filter(
       (item) => new Date(item.dt * 1000).getDate() === dayOfMonth
     );
-  return currentHours && currentHours.slice(0, 8);
+  }
+  return currentHours.slice(0, 8);
 };
 
 const ForecastInDepth = ({ location }) => {

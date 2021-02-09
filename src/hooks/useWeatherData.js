@@ -19,6 +19,7 @@ import { dateFormat } from '../utils';
 const useOpenWeatherData = (data) => {
   const date = useRef(0);
   const weekdayName = useRef('');
+  const monthDay = useRef('');
   const monthDayYear = useRef('');
   const currentTemp = useRef(0);
   const hiTemp = useRef(0);
@@ -31,6 +32,11 @@ const useOpenWeatherData = (data) => {
     date.current = new Date(dt * 1000);
 
     weekdayName.current = dateFormat(date.current, { weekday: 'long' });
+
+    monthDay.current = dateFormat(date.current, {
+      month: 'numeric',
+      day: 'numeric',
+    });
 
     monthDayYear.current = dateFormat(date.current, {
       day: 'numeric',
@@ -51,6 +57,7 @@ const useOpenWeatherData = (data) => {
   return {
     date: date.current,
     weekdayName: weekdayName.current,
+    monthDay: monthDay.current,
     monthDayYear: monthDayYear.current,
     currentTemp: currentTemp.current,
     hiTemp: hiTemp.current,
