@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import { dateFormat } from '../../../utils';
 import { WeatherAppContext } from '../../Context';
 import InDepthLink from '../../InDepthLink';
 
@@ -24,15 +25,14 @@ const useHourData = (thisDate) => {
   return currentHours && currentHours.slice(0, 8);
 };
 
-const ForecastInDepth = ({ location, match }) => {
-  console.log('🚀 ~ file: index.js ~ line 28 ~ ForecastInDepth ~ match', match);
+const ForecastInDepth = ({ location }) => {
   const todayDate =
     location.thisDate &&
-    new Intl.DateTimeFormat('en-US', {
+    dateFormat(location.thisDate, {
       month: 'long',
       day: 'numeric',
       year: 'numeric',
-    }).format(new Date(location.thisDate));
+    });
 
   const eightHours = useHourData(location.thisDate);
 
