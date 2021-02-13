@@ -1,15 +1,10 @@
 @import '../../../global_styles/typography';
 
-.container {
+.contentContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  // justify-content: center;
-  height: 100%;
-}
-
-.wrapper {
-  text-align: center;
+  justify-content: center;
 }
 
 .weekdayTitle {
@@ -22,7 +17,7 @@
 .dateSubtitle {
   @extend %typescale-5;
   @include margin-top(0);
-  @include margin-bottom(2);
+  @include margin-bottom(0);
 }
 
 .hourlyList,
@@ -37,7 +32,7 @@
   justify-content: center;
   list-style: none;
   padding-top: 16px;
-  max-width: 548px;
+  max-width: 512px;
 }
 
 .hourlyItem {
@@ -47,15 +42,23 @@
   align-items: center;
   margin: 0 8px 24px;
   padding: 8px;
+  width: 112px;
 }
 
 .itemTime {
   font-weight: bold;
 }
 
+.tempText {
+  @extend %typescale-5;
+  @include margin-bottom(0);
+  @include margin-top(0);
+  line-height: 1
+}
+
 .weatherIcon {
   $vertical-margin: 0.25;
-  @extend %typescale-2;
+  @extend %typescale-4;
   @include margin-bottom($vertical-margin);
   @include margin-top($vertical-margin);
   line-height: 1;

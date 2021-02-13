@@ -7,9 +7,9 @@ const btnStyle = {
   fontWeight: 'bold',
   textDecoration: 'none',
   padding: `calc((44px - 1rem) / 2) 16px`,
-  position: 'absolute',
-  bottom: '24px',
-  right: '24px',
+  marginBottom: '16px',
+  marginRight: '16px',
+  alignSelf: 'flex-end'
 };
 
 const InDepthLink = ({ date, path, children, weekday }) => {
