@@ -22,10 +22,10 @@ const useHourData = (thisDate) => {
   if (thisDate) {
     dayOfMonth.current = thisDate.getDate();
     currentHours.current = hourForecast.filter(
-      (item) => new Date(item.dt * 1000).getDate() === dayOfMonth
+      (item) => new Date(item.dt * 1000).getDate() === dayOfMonth.current
     );
+    return currentHours.current.slice(0, 8);
   }
-  return currentHours.slice(0, 8);
 };
 
 const ForecastInDepth = ({ location }) => {

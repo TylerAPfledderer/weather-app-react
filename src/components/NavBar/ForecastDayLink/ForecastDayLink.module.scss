@@ -67,16 +67,12 @@
     @extend %typescale-5;
     margin-top: 25%;
   }
-
-  & i {
-    font-size: 1.25em;
-  }
 }
 
 .wi_link_icon::before {
-  @extend %typescale-3;
+  @extend %typescale-4;
   flex: 1;
-  margin-right: 1rem;
+  margin-right: 0.5rem;
 }
 
 .day_link__date {
