@@ -8,7 +8,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 ReactDOM.render(
   <React.StrictMode>
     <Provider>
-      <Router basename='/weather-app-react'>
+      <Router>
         <App />
       </Router>
     </Provider>

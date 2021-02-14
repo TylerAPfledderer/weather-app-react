@@ -6,25 +6,24 @@ html {
 }
 
 :root {
-  --day-body-color: #40607a;
+  --day-body-color: #336996;
   --night-body-color: #49407a;
-  --day-main-color: #84c7fe;
-  --night-main-color: #9984fe;
+  --current-time-color: var(--day-body-color);
 }
 
 * {
   @include line-height(1);
   box-sizing: border-box;
   padding: 0;
+  margin: 0;
 }
 
-body {
-  --body-color: var(--night-body-color);
-  background: var(--body-color);
+.app-container {
+  background: var(--current-time-color);
   height: 100vh;
 }
 
-#root {
+.app-wrapper {
   border-radius: 10px;
   display: flex;
   overflow: hidden;
