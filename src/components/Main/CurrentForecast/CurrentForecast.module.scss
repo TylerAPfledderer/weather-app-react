@@ -1,21 +1,6 @@
 @import '../../../global_styles/variables';
 @import '../../../global_styles/typography.scss';
 
-.mainContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  position: relative;
-}
-
-.wrapper {
-  flex: 1;
-  display: flex;
-  align-items: center;
-}
-
 .contentContainer {
   background: rgba(black, 0.3);
   border-radius: 10px;
