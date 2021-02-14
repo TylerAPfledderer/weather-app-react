@@ -2,7 +2,6 @@ import { useContext } from 'react';
 import useOpenWeatherData from '../../../hooks/useWeatherData';
 import MainLayout from '../../../layout/MainLayout';
 import { WeatherAppContext } from '../../Context';
-import InDepthLink from '../../InDepthLink';
 
 import {
   contentContainer,
