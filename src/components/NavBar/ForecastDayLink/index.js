@@ -21,6 +21,11 @@ const ForecastDayLink = ({
   index,
 }) => {
   return (
+    /**
+     * TODO:
+     *  Interpolate a variable in pathname to use the query for generating
+     *    hourly data instead of a separate prop.
+     */
     <li className={link_item}>
       <Link
         to={{
