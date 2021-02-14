@@ -40,6 +40,14 @@ const ForecastInDepth = ({ location }) => {
   const eightHours = useHourData(location.thisDate);
 
   return (
+
+    /**
+     * TODO:
+     *  - Add conditional to provide "Not Available" text
+     *    if no hourly data exists for a given day passed to this component
+     *  - Replace Router Link prop that passes in Date object with call to the URL query to generate
+     *    the hourly data for the chosen day.
+     */
     <MainLayout linkPath='/' linkText='Current Forecast'>
       <div className={contentContainer}>
         <h1 className={weekdayTitle}>{location.weekDay}</h1>
