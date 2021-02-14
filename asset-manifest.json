@@ -1,0 +1,38 @@
+{
+  "files": {
+    "main.css": "/static/css/main.410f76bb.chunk.css",
+    "main.js": "/static/js/main.407125fd.chunk.js",
+    "main.js.map": "/static/js/main.407125fd.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.9122bed1.js",
+    "runtime-main.js.map": "/static/js/runtime-main.9122bed1.js.map",
+    "static/js/2.94132788.chunk.js": "/static/js/2.94132788.chunk.js",
+    "static/js/2.94132788.chunk.js.map": "/static/js/2.94132788.chunk.js.map",
+    "static/css/3.b8aa6167.chunk.css": "/static/css/3.b8aa6167.chunk.css",
+    "static/js/3.fb9a5a6c.chunk.js": "/static/js/3.fb9a5a6c.chunk.js",
+    "static/js/3.fb9a5a6c.chunk.js.map": "/static/js/3.fb9a5a6c.chunk.js.map",
+    "static/css/4.81b724dd.chunk.css": "/static/css/4.81b724dd.chunk.css",
+    "static/js/4.0bce77f6.chunk.js": "/static/js/4.0bce77f6.chunk.js",
+    "static/js/4.0bce77f6.chunk.js.map": "/static/js/4.0bce77f6.chunk.js.map",
+    "static/css/5.b428ea06.chunk.css": "/static/css/5.b428ea06.chunk.css",
+    "static/js/5.66a9b1cf.chunk.js": "/static/js/5.66a9b1cf.chunk.js",
+    "static/js/5.66a9b1cf.chunk.js.map": "/static/js/5.66a9b1cf.chunk.js.map",
+    "static/js/6.10c37ee1.chunk.js": "/static/js/6.10c37ee1.chunk.js",
+    "static/js/6.10c37ee1.chunk.js.map": "/static/js/6.10c37ee1.chunk.js.map",
+    "static/js/7.a93c0db6.chunk.js": "/static/js/7.a93c0db6.chunk.js",
+    "static/js/7.a93c0db6.chunk.js.map": "/static/js/7.a93c0db6.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/3.b8aa6167.chunk.css.map": "/static/css/3.b8aa6167.chunk.css.map",
+    "static/css/4.81b724dd.chunk.css.map": "/static/css/4.81b724dd.chunk.css.map",
+    "static/css/5.b428ea06.chunk.css.map": "/static/css/5.b428ea06.chunk.css.map",
+    "static/css/main.410f76bb.chunk.css.map": "/static/css/main.410f76bb.chunk.css.map",
+    "static/js/2.94132788.chunk.js.LICENSE.txt": "/static/js/2.94132788.chunk.js.LICENSE.txt",
+    "static/media/Main.module.scss": "/static/media/skyline.a05b4fab.svg",
+    "static/media/weather-icons.min.css": "/static/media/weathericons-regular-webfont.e218aee6.woff2"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.9122bed1.js",
+    "static/js/2.94132788.chunk.js",
+    "static/css/main.410f76bb.chunk.css",
+    "static/js/main.407125fd.chunk.js"
+  ]
+}
