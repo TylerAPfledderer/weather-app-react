@@ -29,18 +29,17 @@ const useHourData = (thisDate) => {
 };
 
 const ForecastInDepth = ({ location }) => {
-  const todayDate =
-    location.thisDate &&
-    dateFormat(location.thisDate, {
-      month: 'long',
-      day: 'numeric',
-      year: 'numeric',
-    });
+  const dayQuery = new URLSearchParams(window.location.search).get('day');
 
-  const eightHours = useHourData(location.thisDate);
+  const todayDate = dateFormat(new Date(dayQuery), {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
+  });
+
+  const eightHours = useHourData(new Date(dayQuery));
 
   return (
-
     /**
      * TODO:
      *  - Add conditional to provide "Not Available" text
@@ -52,13 +51,16 @@ const ForecastInDepth = ({ location }) => {
       <div className={contentContainer}>
         <h1 className={weekdayTitle}>{location.weekDay}</h1>
         <h2 className={dateSubtitle}>{todayDate}</h2>
+        {eightHours.length === 0 
+          ? <h3>This data is currently not available. Check back tomorrow!</h3>
+          : null
+        }
         <ul className={hourlyList}>
           {eightHours &&
             eightHours.map(({ dt, pop, weather, temp }, index) => {
               const hour = dateFormat(new Date(dt * 1000), {
                 timeStyle: 'short',
               });
-              console.log(hour);
               return (
                 <li className={hourlyItem} key={index}>
                   <span className={itemTime}>{hour}</span>

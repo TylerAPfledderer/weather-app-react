@@ -18,8 +18,8 @@ const ForecastDayLink = ({
   monthDay,
   minTemp,
   maxTemp,
-  index,
 }) => {
+  
   return (
     /**
      * TODO:
@@ -29,8 +29,7 @@ const ForecastDayLink = ({
     <li className={link_item}>
       <Link
         to={{
-          pathname: `/forecast-in-depth/${index}`,
-          thisDate: date,
+          pathname: `/forecast-in-depth/?day=${date.toLocaleDateString('en-US', {day: 'numeric', month: 'numeric', year: 'numeric'})}`,
           weekDay: day,
         }}
         className={link}

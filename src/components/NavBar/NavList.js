@@ -48,7 +48,6 @@ const NavList = () => {
               <ForecastDayLink
                 key={index}
                 date={date}
-                index={index}
                 day={weekday}
                 icon={id}
                 minTemp={min}

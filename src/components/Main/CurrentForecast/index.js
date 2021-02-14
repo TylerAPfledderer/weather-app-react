@@ -25,7 +25,7 @@ const CurrentForecast = () => {
   return (
       <MainLayout
         date={date}
-        linkPath='/forecast-in-depth/0'
+        linkPath={`/forecast-in-depth/?day=${date && date.toLocaleDateString('en-US', {day: 'numeric', month: 'numeric', year: 'numeric'})}`}
         dayName='Today'
         linkText="Today's Outlook"
       >
